@@ -1,0 +1,2 @@
+# DataStructer
+learn LintCode 
