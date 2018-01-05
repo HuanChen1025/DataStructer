@@ -26,10 +26,6 @@ hs_err_pid*
 # 忽略指定文件夹
 target/
 bin/
-Array/
-Bank/
-Bubble/
-Chap04/
-List/
+
 
 
