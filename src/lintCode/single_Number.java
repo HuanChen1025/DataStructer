@@ -3,7 +3,6 @@ package lintCode;
 import java.util.HashMap;
 
 public class single_Number {
-
     /**
      * Given an array of integers,
      * every element appears twice except for one.
@@ -53,7 +52,7 @@ public class single_Number {
             }
         }
         /**
-         * 遍历hashmap，
+         * 遍历hashmap，查找value为1的值
          */
         for(Integer getKey: singleNumber.keySet()){
             if(singleNumber.get(getKey).equals(1)){
