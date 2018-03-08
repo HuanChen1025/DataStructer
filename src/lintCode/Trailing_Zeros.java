@@ -18,7 +18,6 @@ public class Trailing_Zeros {
             }
         }
         return num;
-
     }
     /**
      * 使用递归的方式实现阶乘
