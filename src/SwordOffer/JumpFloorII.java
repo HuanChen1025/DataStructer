@@ -25,9 +25,33 @@ public class JumpFloorII {
             second = first * 2;
             target--;
         }
-
-
         return second;
 
     }
+
+
+    /**
+     * 采用数学归纳法，其实f(n) = 2(n-1)次方
+     * 采用移位操作，更加符合计算机的计算方式，更快
+     * @param target
+     * @return
+     */
+    public static int JumpFloorII_2(int target) {
+        if (target == 0){
+            return 0;
+        }
+        int result = 1;
+        while (target >= 2){
+            result = result << 1;
+            target--;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(JumpFloorII_2(0));
+    }
+
+
+
 }
