@@ -23,12 +23,13 @@ public class FindKthToTail {
      * @return
      */
     public ListNode findKthToTail(ListNode listNode,int K){
-        if (listNode == null){
+        //检查用户的输入是否合规
+        if (listNode == null || K<=0){
             return null;
         }
 
         ListNode pHead = listNode;  //头指针
-        ListNode pBehind = null;    //尾指针，用于指向第 K 个数
+        ListNode pBehind = listNode;    //尾指针，用于指向第 K 个数
 
        for (int i =0;i<K-1 ;i++){
            if (pHead.next != null){
@@ -39,8 +40,9 @@ public class FindKthToTail {
            }
        }
 
-       pBehind = listNode;
-       while (pHead != null){
+       //此处必须是从 pHead.next 开始，相当于检查下一个是否存在，存在的话两个指针才一起向右移动
+        //如果输入长度大于链表长度呢
+       while (pHead.next != null){
            pBehind = pBehind.next;
            pHead = pHead.next;
        }
