@@ -11,6 +11,7 @@ public class QuickSort {
      * @return
      */
     public static int adjustArray(int[] s,int l,int r){
+
         int i =l,j=r;
         //s[l] 就是 s[i] 第一个坑
         int x = s[l];   //左边的第一个数组为坑的开始，当然，可以改

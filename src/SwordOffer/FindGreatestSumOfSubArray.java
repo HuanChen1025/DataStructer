@@ -28,14 +28,30 @@ public class FindGreatestSumOfSubArray {
             }
 
         }
-
         return maxSubSum;
+    }
 
+    public static int FindGreatestSumOfSubArray_01(int [] array){
+        if (array.length == 0 || array == null){
+            return 0;
+        }
+        int currentSum = 0;
+        int greatestSum = 0;
+        for (int i=0;i<array.length;i++){
+           if (currentSum<=0)
+               currentSum = array[i];
+           else
+               currentSum +=array[i];
+           if (currentSum>greatestSum){
+               greatestSum = currentSum;
+           }
+        }
+        return greatestSum;
     }
 
     public static void main(String[] args) {
         int [] array = {6,-3,-2,7,-15,1,2,2};
-        System.out.println(FindGreatestSumOfSubArray(array));
+        System.out.println(FindGreatestSumOfSubArray_01(array));
     }
 
 }
