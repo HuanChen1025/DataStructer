@@ -1,5 +1,8 @@
 package SwordOffer;
 
+/**
+ * 输入一个数，计算这个数中二进制形式 1 的个数
+ */
 public class NumberOf1 {
 
     /**
