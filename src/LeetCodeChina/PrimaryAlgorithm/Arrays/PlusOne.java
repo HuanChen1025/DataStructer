@@ -8,6 +8,8 @@ package LeetCodeChina.PrimaryAlgorithm.Arrays;
  * 最高位数字存放在列表的首位。
 
  * 本题的意图是：将一个非负整数的各位放到一个数组中，返回这个非负整数加一的结果
+ *
+ * https://blog.csdn.net/biezhihua/article/details/79594528
  */
 public class PlusOne {
 
