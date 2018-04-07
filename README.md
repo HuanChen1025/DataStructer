@@ -10,6 +10,7 @@
 <!-- MarkdownTOC -->
 
 - [leetcode](#leetcode)
+- [2.两数相加](#2%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0)
 - [328.Odd Even Linked List](#328odd-even-linked-list)
 - [160. 相交链表](#160-%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8)
 
@@ -17,6 +18,90 @@
 
 <a id="leetcode"></a>
 ## leetcode
+
+<a id="2%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0"></a>
+## 2.两数相加
+
+### 题目：
+>给定两个非空链表来代表两个非负整数，位数按照逆序方式存储，它们的每个节点只存储单个数字。将这两数相加会返回一个新的链表。
+
+>你可以假设除了数字 0 之外，这两个数字都不会以零开头。
+
+> 示例：
+
+> 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
+
+>输出：7 -> 0 -> 8
+
+>原因：342 + 465 = 807
+
+
+
+### 思路：
+
+声明新链表及其指针和进位，设定循环，每轮的总求和为两链表指针当前位置的数字之和再加上一轮的进位，
+
+计算当前结果值为总求和的个位，进位值为其十位，直到两个链表均为空
+
+参考：https://blog.csdn.net/weixin_38385524/article/details/79520460
+
+### 代码
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+                if (l1 == null || l2 == null)
+            return l1==null?l2:l1;
+
+        ListNode list1 = l1;
+        ListNode list2 = l2;
+
+        ListNode result = new ListNode(0);
+
+        ListNode head = result;
+
+        int add =0; //add表示进位
+        while (true){
+            int sum  = list1.val + list2.val + add;
+
+            head.val = sum%10;  //当前结点值
+
+            add = sum/10;   //进位
+
+            if (list1.next == null && list2.next == null){
+                if (add != 0){
+                    head.next = new ListNode(add);
+                }
+                break;
+            }
+            if (list1.next == null)
+                list1.next = new ListNode(0);
+
+            if (list2.next == null)
+                list2.next = new ListNode(0);
+
+            list1 = list1.next;
+
+            list2 = list2.next;
+
+            head.next = new ListNode(0);
+
+            head = head.next;
+
+        }
+            return result;
+    }
+}
+```
+
 
 
 
@@ -97,11 +182,8 @@ class Solution {
 
 >例如，下面的两个链表：
 
->A:          a1 → a2
-                   ↘
-                     c1 → c2 → c3
-                   ↗            
->B:     b1 → b2 → b3
+>![160Image](https://github.com/HuanChen1025/DataStructer/blob/master/img/160Image.JPG?raw=true)
+
 >在节点 c1 开始相交。
 
  
@@ -113,3 +195,81 @@ class Solution {
 可假定整个链表结构中没有循环。
 >程序尽量满足 O(n) 时间复杂度，且仅用 O(1) 内存。
 
+### 思路：
+ > 思路：两个链表的公共结点，也就是说这两个链表在这里交汇。
+ 
+ > 如果为双向链表的话，可以从后往前遍历，寻找分叉点，效率很高
+ 
+ > 单链表没有指向前一个结点的指针
+ 
+ > 首先获取到整个链表的长度，做差得到两个链表的长度差值，
+ 
+ > 长的链表先走 差值 步，然后两个链表同时向前走，知道两个结点不为空且相等，
+ 
+ > 返回该结点，即位公共结点
+ 
+ > 方法是最优的，其中语句可以做优化，使运算速度更快
+
+### 代码(java)
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+                if (headA == null || headB == null)
+            return null;
+
+        int longList  = listLength(headA);
+        int shortList = listLength(headB);
+        ListNode longListNode = headA;
+        ListNode shortListNode = headB;
+
+
+        int diff = longList - shortList;
+
+        if (diff<0){
+            longListNode = headB;
+            shortListNode = headA;
+            diff = Math.abs(diff);
+        }
+
+        while (diff>0){
+            longListNode = longListNode.next;
+            diff--;
+        }
+
+        while (longListNode != null && shortListNode != null && (longListNode != shortListNode)){
+            longListNode = longListNode.next;
+            shortListNode = shortListNode.next;
+        }
+
+        return longListNode;
+    }
+    
+        private int listLength(ListNode head){
+        if (head == null)
+            return 0;
+        int result =1;
+
+        if (head.next == null)
+            return result;
+
+        while (head.next != null){
+            result++;
+            head = head.next;
+        }
+        return result;
+    }
+}
+
+```
