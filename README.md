@@ -36,14 +36,6 @@ The first node is considered odd, the second node even and so on ...
 
 ### 代码(java)：
 
-    /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     *     int val;
-     *     ListNode next;
-     *     ListNode(int x) { val = x; }
-     * }
-     */
     class Solution {
     public ListNode oddEvenList(ListNode head) {
                 if (head == null || head.next == null)
@@ -66,5 +58,5 @@ The first node is considered odd, the second node even and so on ...
         }
         oddNext.next = even;
         return head;
-    	}
     }
+	}
