@@ -324,7 +324,7 @@ public class Solution {
 >
 >采用**深度优先遍历**，把访问过的改为‘0’，继续遍历,递归求解
 
-### 代码
+### 代码(java)
 
 ```java
 class Solution {
