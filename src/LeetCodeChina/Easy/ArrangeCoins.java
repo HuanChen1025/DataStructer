@@ -64,7 +64,5 @@ public class ArrangeCoins {
         ArrangeCoins arrangeCoins = new ArrangeCoins();
         System.out.println(arrangeCoins.arrangeCoins(1));
 
-        System.out.println(Integer.MIN_VALUE);
-        System.out.println(Integer.MAX_VALUE);
     }
 }
