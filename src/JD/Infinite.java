@@ -11,6 +11,7 @@ package JD;
 		public static void main(String[] args) {
 			System.out.println("第5050项是"+fun(5050));
 			System.out.println("第5050项是"+funcc(5050));
+
 			System.out.println(Math.pow(2, 7));
 			
 		}
