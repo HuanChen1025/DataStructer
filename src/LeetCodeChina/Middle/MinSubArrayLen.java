@@ -28,20 +28,13 @@ public class MinSubArrayLen {
             if (sum<s){
                 fast++;
             }
-            else if (sum>s){//要是第一个就大于s呢，
+            else if (sum>=s){//要是第一个就大于s呢，
 
                 int temp = fast-slow+1;
                 //取最小值
                 if (temp<res)
                     res=temp;
                 slow++;
-            }
-            else {
-                int temp = fast-slow+1;
-                //取最小值
-                if (temp<res)
-                    res=temp;
-                fast++;
             }
         }
         if (res == Integer.MAX_VALUE)
@@ -63,7 +56,7 @@ public class MinSubArrayLen {
         MinSubArrayLen obj = new MinSubArrayLen();
         //11
         //[1,2,3,4,5]
-        int[] nums ={1,2,3,4,5};
-        System.out.println(obj.minSubArrayLen_01(11,nums));
+        int[] nums ={2,3,1,2,4,3};
+        System.out.println(obj.minSubArrayLen_01(7,nums));
     }
 }
