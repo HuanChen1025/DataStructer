@@ -31,24 +31,43 @@ public class ReverseList {
         return resultNode.next;
     }
 
+    /**
+     * 原地翻转，空间复杂度为O(1)
+     *
+     * 改变链表的指向
+     *
+     * @param head
+     * @return
+     */
     public ListNode ReverseList_1(ListNode head) {
         if (head == null || head.next == null)
             return head;
 
-        ListNode p = head.next;
+        ListNode reverseHead = null;
+        ListNode pNode = head;
+        ListNode pPrev = null;
 
-        head.next = null;
+        while (pNode != null){
+            ListNode pNext = pNode.next;
 
-        ListNode last = null;
+            //如果链表遍历结束，将 pNode 赋值给 reverseHead
+            if (pNext == null)
+                reverseHead = pNode;
 
-        while (p.next != null){
-            last  = p.next; //
-            p.next = head;
-            head = p;
-            p = last;
+            pNode.next = pPrev;
+
+            pPrev =pNode;
+            pNode =pNext;
         }
-        p.next = head;
-        head = p;
-        return head;
+
+        return reverseHead;
+    }
+
+    public static void main(String[] args) {
+        ListNode root = new ListNode(1);
+        root.next = new ListNode(2);
+        root.next.next = new ListNode(3);
+        ReverseList obj = new ReverseList();
+        obj.ReverseList_1(root);
     }
 }
