@@ -16,13 +16,13 @@ public class ArrangeCoins {
         int start =0;
         int end =n;
 
-        while (start <= end){
+        while (start < end){
             int middle = start +(end-start)/2;
 
             int sum = middle*(middle+1)/2;
 
             if (sum>n){
-                end = middle-1;
+                end = middle;
             }
             else if (sum<=n){
                 start = middle+1;
