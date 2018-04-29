@@ -1,6 +1,5 @@
 package SwordOffer;
 
-import lintCode.Str;
 
 public class LeftRotateString {
 
