@@ -1,4 +1,4 @@
-package LeetCodeChina.Arrays;
+package LeetCodeChina.List;
 
    class ListNode {
       int val;
