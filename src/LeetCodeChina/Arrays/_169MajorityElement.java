@@ -23,8 +23,6 @@ public class _169MajorityElement {
                 return nums[i];
             }
         }
-
-
         return 0;
     }
 
