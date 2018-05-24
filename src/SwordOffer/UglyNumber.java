@@ -18,7 +18,7 @@ public class UglyNumber {
             number /= 3;
         while (number%5 == 0)
             number /= 5;
-        return number == 1 ?true:false;
+        return number == 1;
     }
 
     /**
